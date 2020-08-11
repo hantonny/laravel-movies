@@ -9,24 +9,24 @@
 </head>
 <body class="font-sans bg-gray-900 text-white">
     <nav class="border-b border-gray-800">
-        <div class="container mx-auto px-4 flex items-center justify-between px-4 py-6">
-            <ul class="flex items-center">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between px-4 py-6">
+            <ul class="flex flex-col md:flex-row items-center">
                 <li>
-                    <a href="">
+                    <a href="#">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-film" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z"/>
                         </svg>
                     </a>
                 </li>
-                <li class="ml-6">
+                <li class="md:ml-6 mt-3 md:mt-0">
                     <a href="" class="hover:text-gray-300">Filmes</a>
                 </li>
-                <li class="ml-6">
+                <li class="md:ml-6 mt-3 md:mt-0">
                     <a href="">Favoritos</a>
                 </li>
             </ul>
-            <div class="flex items-center">
-                <div class="relative">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="relative mt-3 md:mt-0">
                     <input type="text" class="bg-gray-800 text-sm rounded-full w-64
                     px-4 pl-8 py-1 focus:outline-none focus:shadow-outline"
                     placeholder="Buscar Filmes">
@@ -37,7 +37,7 @@
                           </svg>
                     </div>
                 </div>
-                <div class="ml-4">
+                <div class="md:ml-4 mt-3 md:mt-0">
                     <a href="#">
                         <img class="rounded-full w-8 h-8"
                         src="https://media-exp1.licdn.com/dms/image/C4D03AQFBCfScZyN_KA/profile-displayphoto-shrink_200_200/0?e=1602720000&v=beta&t=-7Tecv9EKqOyLsZpsGXkLIb9jVzMXDmbQ6TLlrkL-8Y" alt="avatar">
