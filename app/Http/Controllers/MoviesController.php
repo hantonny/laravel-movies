@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
+use App\Movie;
 
 class MoviesController extends Controller
 {
@@ -40,7 +42,11 @@ class MoviesController extends Controller
      */
     public function create()
     {
-        //
+        $movies = Movie::all();
+
+        $array = array('movies'=>$movies);
+
+        return view('favorito', $array);
     }
 
     /**
@@ -51,7 +57,28 @@ class MoviesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->filled('title') &&
+          $request->filled('poster_path')) {
+
+            $title = $request->input('title');
+            $poster_path = $request->input('poster_path');
+
+            $data =$request->only(['title','poster_path']);
+            $validator = Validator::make($data,[
+                'title'=>['required', 'string','max:200','unique:movie'],
+                'poster_path'=>['required', 'string','max:500','unique:movie'],
+            ]);
+
+            if($validator->fails()){
+                return redirect()->route('movies.index');
+            }else{
+                $movie = new Movie;
+                $movie->title = $title;
+                $movie->poster_path = $poster_path;
+                $movie->save();
+            }
+        }
+        return redirect()->route('movies.index');
     }
 
     /**

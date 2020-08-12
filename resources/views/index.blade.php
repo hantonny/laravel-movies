@@ -31,12 +31,6 @@
                                 {{$genres->get($genre)}}@if(!$loop->last),@endif
                             @endforeach
                         </div>
-                        <a href="#" class="mt-1 bg-orange-300 hover:bg-red-400 transition ease-in-out duration-150 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill mr-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                            </svg>
-                            <span class="text-sm uppercase">Favorito</span>
-                        </a>
                     </div>
                 </div>
                 @endforeach

@@ -51,6 +51,18 @@
                         </a>
                     </div>
                 @endif
+                <div></div>
+                <form action="" method="POST">
+                    @csrf
+                    <input type="text" hidden value="{{$movie['title']}}" name="title">
+                    <input type="text" hidden value="{{'https://image.tmdb.org/t/p/w500/'.$movie['poster_path']}}" name="poster_path">
+                    <button type="submit" href="#" class="mt-1 bg-green-300 hover:bg-red-400 transition ease-in-out duration-150 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center mt-2">
+                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-play" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+                        </svg>
+                        <span class="text-sm uppercase">Assistir Depois</span>
+                    </button>
+                    </form>
             </div>
         </div>
     </div>
