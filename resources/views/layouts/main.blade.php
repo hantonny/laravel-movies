@@ -11,20 +11,37 @@
     <nav class="border-b border-gray-800">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between px-4 py-6">
             <ul class="flex flex-col md:flex-row items-center">
+
                 <li>
-                    <a href="{{route('movies.index')}}">
+                    <a href="/">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-film" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z"/>
                         </svg>
                     </a>
                 </li>
+                @if(!Auth::user())
+                <li class="md:ml-6 mt-3 md:mt-0">
+                    <a href="{{route('login')}}" class="hover:text-gray-300">Login</a>
+                </li>
+                @endif
+                @if(!Auth::user())
+                <li class="md:ml-6 mt-3 md:mt-0">
+                    <a href="{{route('register')}}" class="hover:text-gray-300">Registrar</a>
+                </li>
+                @endif
+                @if(Auth::user())
                 <li class="md:ml-6 mt-3 md:mt-0">
                     <a href="{{route('movies.index')}}" class="hover:text-gray-300">Filmes</a>
                 </li>
+                @endif
+                @if(Auth::user())
                 <li class="md:ml-6 mt-3 md:mt-0">
                     <a href="{{route('movies.create')}}">Assistir Depois</a>
                 </li>
+                @endif
+
             </ul>
+            @if (Auth::user())
             <div class="flex flex-col md:flex-row items-center">
                 <div class="relative mt-3 md:mt-0">
                     <input type="text" class="bg-gray-800 text-sm rounded-full w-64
@@ -37,13 +54,25 @@
                           </svg>
                     </div>
                 </div>
-                <div class="md:ml-4 mt-3 md:mt-0">
-                    <a href="#">
-                        <img class="rounded-full w-8 h-8"
-                        src="https://media-exp1.licdn.com/dms/image/C4D03AQFBCfScZyN_KA/profile-displayphoto-shrink_200_200/0?e=1602720000&v=beta&t=-7Tecv9EKqOyLsZpsGXkLIb9jVzMXDmbQ6TLlrkL-8Y" alt="avatar">
-                    </a>
-                </div>
+                <ul class="flex flex-col md:flex-row items-center ml-4">
+                @if(Auth::user())
+                <li class="nav-item dropdown">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            <p class="uppercase text-red-500 font-bold">{{ __('Sair') }}</p>
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+                @endif
+                </ul>
             </div>
+            @endif
         </div>
     </nav>
     @yield('content')
