@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use App\Movie;
+use App\User;
 
 class MoviesController extends Controller
 {
@@ -62,6 +63,7 @@ class MoviesController extends Controller
 
             $title = $request->input('title');
             $poster_path = $request->input('poster_path');
+            $id_user = $request->input('user');
 
             $data =$request->only(['title','poster_path']);
             $validator = Validator::make($data,[
@@ -75,6 +77,7 @@ class MoviesController extends Controller
                 $movie = new Movie;
                 $movie->title = $title;
                 $movie->poster_path = $poster_path;
+                $movie->id_user = $id_user;
                 $movie->save();
             }
         }

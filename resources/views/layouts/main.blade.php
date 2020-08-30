@@ -31,6 +31,11 @@
                 @endif
                 @if(Auth::user())
                 <li class="md:ml-6 mt-3 md:mt-0">
+                    <p class="hover:text-gray-300">Seja bem vindo, {{Auth::user()->name}}!</p>
+                </li>
+                @endif
+                @if(Auth::user())
+                <li class="md:ml-6 mt-3 md:mt-0">
                     <a href="{{route('movies.index')}}" class="hover:text-gray-300">Filmes</a>
                 </li>
                 @endif

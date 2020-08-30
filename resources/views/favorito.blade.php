@@ -10,6 +10,7 @@
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16">
             @foreach ($movies as $movie)
+            @if(Auth::user()->id == $movie->id_user)
             <div class="mt-8">
                 <img src="{{$movie['poster_path']}}" alt="poster" class="hover:opacity-75 transition ease-in-out duration-150">
                 <div class="mt-2">
@@ -20,8 +21,8 @@
                     </div>
                 </div>
             </div>
+            @endif
             @endforeach
-
         </div>
     </div>
 @endsection
