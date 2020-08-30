@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Meus Filmes</title>
+    <title>MOVIES FLIX</title>
     <link rel="stylesheet" href="/css/main.css">
+    <livewire:styles>
 </head>
 <body class="font-sans bg-gray-900 text-white">
     <nav class="border-b border-gray-800">
@@ -48,17 +49,7 @@
             </ul>
             @if (Auth::user())
             <div class="flex flex-col md:flex-row items-center">
-                <div class="relative mt-3 md:mt-0">
-                    <input type="text" class="bg-gray-800 text-sm rounded-full w-64
-                    px-4 pl-8 py-1 focus:outline-none focus:shadow-outline"
-                    placeholder="Buscar Filmes">
-                    <div class="absolute top-0">
-                        <svg class="fill-current text-gray-500 w-4 mt-2 ml-2" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-                          </svg>
-                    </div>
-                </div>
+                <livewire:search-dropdown>
                 <ul class="flex flex-col md:flex-row items-center ml-4">
                 @if(Auth::user())
                 <li class="nav-item dropdown">
@@ -80,6 +71,7 @@
             @endif
         </div>
     </nav>
+    <livewire:scripts>
     @yield('content')
 </body>
 </html>

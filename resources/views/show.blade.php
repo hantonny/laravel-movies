@@ -3,7 +3,7 @@
 @section('content')
     <div class="movie-info border-b border-gray-800">
         <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
-            <img src="{{'https://image.tmdb.org/t/p/w500/'.$movie['poster_path']}}" alt="parasite"
+            <img src="{{'https://image.tmdb.org/t/p/w500/'.$movie['poster_path']}}" alt="{{$movie['title']}}"
             class="w-64 lg:w-96">
             <div class="md:ml-24">
                 <h2 class="text-4xl font-semibold">
@@ -55,6 +55,7 @@
                 <form action="" method="POST">
                     @csrf
                     <input type="hidden" value="{{Auth::user()->id}}" name="user">
+                    <input type="hidden" value="{{$movie['id']}}" name="id_movie">
                     <input type="text" hidden value="{{$movie['title']}}" name="title">
                     <input type="text" hidden value="{{'https://image.tmdb.org/t/p/w500/'.$movie['poster_path']}}" name="poster_path">
                     <button type="submit" href="#" class="mt-1 bg-green-300 hover:bg-red-400 transition ease-in-out duration-150 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center mt-2">

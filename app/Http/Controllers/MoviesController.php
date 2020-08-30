@@ -45,9 +45,15 @@ class MoviesController extends Controller
     {
         $movies = Movie::all();
 
-        $array = array('movies'=>$movies);
+        $popularMovies = Http::withToken(config('services.tmdb.token'))
+        ->get('https://api.themoviedb.org/3/movie/popular?language=pt-BR')
+        ->json()['results'];
 
-        return view('favorito', $array);
+
+        return view('favorito', [
+            'popularMovies' => $popularMovies,
+            'movies'=>$movies
+        ]);
     }
 
     /**
@@ -64,6 +70,7 @@ class MoviesController extends Controller
             $title = $request->input('title');
             $poster_path = $request->input('poster_path');
             $id_user = $request->input('user');
+            $id_movie = $request->input('id_movie');
 
             $data =$request->only(['title','poster_path']);
             $validator = Validator::make($data,[
@@ -78,6 +85,7 @@ class MoviesController extends Controller
                 $movie->title = $title;
                 $movie->poster_path = $poster_path;
                 $movie->id_user = $id_user;
+                $movie->id_movie = $id_movie;
                 $movie->save();
             }
         }
