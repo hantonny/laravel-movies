@@ -74,8 +74,8 @@ class MoviesController extends Controller
 
             $data =$request->only(['title','poster_path']);
             $validator = Validator::make($data,[
-                'title'=>['required', 'string','max:200','unique:movie'],
-                'poster_path'=>['required', 'string','max:500','unique:movie'],
+                'title'=>['required', 'string','max:200'],
+                'poster_path'=>['required', 'string','max:500'],
             ]);
 
             if($validator->fails()){

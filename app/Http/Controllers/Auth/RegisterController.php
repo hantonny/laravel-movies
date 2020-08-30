@@ -58,7 +58,7 @@ class RegisterController extends Controller
         $validator  = $this->validator($data);
 
         if($validator->fails()){
-            return redirect()->route('register')->withInput();
+            return redirect()->route('register')->withInput()->with('warning' , 'Dados incorretos!');
         }
 
         $user = $this->create($data);
