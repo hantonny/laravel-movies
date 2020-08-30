@@ -2,6 +2,15 @@
 
 @section('content')
 
+@if (session('warning'))
+<div class="bg-indigo-900 text-center py-4 md:mt-5 md:mb-2 max-w-lg m-auto">
+  <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+    <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">Aviso</span>
+    <span class="font-semibold mr-2 text-left flex-auto">{{session('warning')}}</span>
+  </div>
+</div>
+@endif
+
             <form class="w-full max-w-lg bg-white m-auto p-10 rounded md:mt-5 md:mb-2" method="POST">
                 @csrf
                 <h2 class="m-auto text-orange-500 mb-2 font-bold text-lg">Login</h2>

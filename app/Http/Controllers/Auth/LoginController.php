@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -42,8 +44,14 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function authenticate(){
-
+    public function authenticate(Request $request){
+        $creds = $request->only(['email', 'password']);
+        
+        if(Auth::attempt($creds)){
+            return redirect()->route('movies.index');
+        } else {
+            return redirect()->route('login')->with('warning' , 'Email e/ou senhas inválidos');
+        }
     }
 
     public function logout(){
