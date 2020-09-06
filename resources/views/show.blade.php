@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="movie-info border-b border-gray-800">
-        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row">
             <img src="{{'https://image.tmdb.org/t/p/w500/'.$movie['poster_path']}}" alt="{{$movie['title']}}"
             class="w-64 lg:w-96">
             <div class="md:ml-24">
@@ -23,48 +23,44 @@
                         @endforeach
                     </span>
                 </div>
-                <p class="text-gray-300 mt-8">
+                <p class="text-gray-300 mt-3">
                     {{$movie['overview']}}
                 </p>
-                <div class="mt-12">
+                <div class="mt-3">
                     <h4 class="text-white font-semibold">
                         Elenco em destaque
                     </h4>
-                    <div class="flex mt-4">
+                    <div class="flex mt-1">
                         @foreach ($movie['credits']['crew'] as $crew)
                             @if ($loop->index < 2)
-                                <div class="mr-8">
+                                <div class="mr-3">
                                     <div>{{$crew['name']}}</div>
                                     <div class="text-sm text-gray-400">{{$crew['job']}}</div>
                                 </div>
                             @endif
                         @endforeach
+                        
+                        <form action="" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{Auth::user()->id}}" name="user">
+                            <input type="hidden" value="{{Auth::user()->id}}{{$movie['id']}}" name="id_movie_user">
+                            <input type="hidden" value="{{$movie['id']}}" name="id_movie">
+                            <input type="text" hidden value="{{$movie['title']}}" name="title">
+                            <input type="text" hidden value="{{'https://image.tmdb.org/t/p/w500/'.$movie['poster_path']}}" name="poster_path">
+                            <button type="submit" href="#" class="-mt-1 bg-green-300 hover:bg-red-400 transition ease-in-out duration-150 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center mt-2">
+                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-play" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+                                </svg>
+                                <span class="text-sm uppercase">Assistir Depois</span>
+                            </button>
+                            </form>
                     </div>
                 </div>
                 @if (count($movie['videos']['results']) > 0)
-                <div class="mt-12">
-                    <a target="_blank" href="https://youtube.com/watch?v={{$movie['videos']['results'][0]['key']}}" class="mt-1 bg-orange-300 hover:bg-red-400 transition ease-in-out duration-150 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-play" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
-                            </svg>
-                            <span class="text-sm uppercase">Assistir Trailer</span>
-                        </a>
-                    </div>
+                <div class="mt-2">
+                        <iframe width="100%" max-width="560" height="315" src="https://www.youtube.com/embed/{{$movie['videos']['results'][0]['key']}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
                 @endif
-                <div></div>
-                <form action="" method="POST">
-                    @csrf
-                    <input type="hidden" value="{{Auth::user()->id}}" name="user">
-                    <input type="hidden" value="{{$movie['id']}}" name="id_movie">
-                    <input type="text" hidden value="{{$movie['title']}}" name="title">
-                    <input type="text" hidden value="{{'https://image.tmdb.org/t/p/w500/'.$movie['poster_path']}}" name="poster_path">
-                    <button type="submit" href="#" class="mt-1 bg-green-300 hover:bg-red-400 transition ease-in-out duration-150 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center mt-2">
-                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-play" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
-                        </svg>
-                        <span class="text-sm uppercase">Assistir Depois</span>
-                    </button>
-                    </form>
             </div>
         </div>
     </div>

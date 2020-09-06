@@ -71,25 +71,28 @@ class MoviesController extends Controller
             $poster_path = $request->input('poster_path');
             $id_user = $request->input('user');
             $id_movie = $request->input('id_movie');
+            $id_movie_user = $request->input('id_movie_user');
 
-            $data =$request->only(['title','poster_path']);
+            $data =$request->only(['title','poster_path', 'id_movie_user']);
             $validator = Validator::make($data,[
                 'title'=>['required', 'string','max:200'],
                 'poster_path'=>['required', 'string','max:500'],
+                'id_movie_user'=>['required', 'unique:movie']
             ]);
 
             if($validator->fails()){
-                return redirect()->route('movies.index');
+                return redirect()->route('movies.index')->with('warning' , 'Filme já adicionado em sua lista!');;
             }else{
                 $movie = new Movie;
                 $movie->title = $title;
                 $movie->poster_path = $poster_path;
                 $movie->id_user = $id_user;
                 $movie->id_movie = $id_movie;
+                $movie->id_movie_user = $id_movie_user;
                 $movie->save();
             }
         }
-        return redirect()->route('movies.index');
+        return redirect()->route('movies.create')->with('warning' , 'Filme adicionado com sucesso! :-)');
     }
 
     /**
