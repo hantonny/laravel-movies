@@ -30,4 +30,10 @@
 
 ---
 
+## 💻 Capturas de Tela
+
+<h1 align="center">
+    <img alt="MOVIESFLIX" title="#MOVIESFLIX" src="/public/movieflix-01.png" width="600px" />
+</h1>
+
 Feito com 💜 por <a href="https://www.linkedin.com/in/hantonny-korrea-2853911a0/"><b>Hantonny Korrea</b></a>
