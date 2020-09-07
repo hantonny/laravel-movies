@@ -28,12 +28,11 @@
 -   [Tailwind CSS](https://tailwindcss.com/)
 -   [TMDb API](https://www.themoviedb.org/documentation/api)
 
----
-
 ## 💻 Capturas de Tela
 
 <h1 align="center">
-    <img alt="MOVIESFLIX" title="#MOVIESFLIX" src="/public/movieflix-01.png" width="800px" />
+    <img alt="MOVIESFLIX" title="#MOVIESFLIX" src="/public/movieflix-01.png" width="900px" />
 </h1>
 
+---
 Feito com 💜 por <a href="https://www.linkedin.com/in/hantonny-korrea-2853911a0/"><b>Hantonny Korrea</b></a>
