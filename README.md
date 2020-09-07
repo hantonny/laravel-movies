@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="MOVIESFLIX" title="#MOVIESFLIX" src="/public/movieflix.png" width="350px" />
+    <img alt="MOVIESFLIX" title="#MOVIESFLIX" src="/public/movieflix.svg" width="600px" />
 </h1>
 
 ## 💻 Projeto
