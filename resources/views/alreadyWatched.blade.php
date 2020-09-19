@@ -10,18 +10,21 @@
   </div>
 </div>
 @endif
-    <div class="container mx-auto px-4 pt-16 mb-20">
+
+    <div class="container mx-auto px-4 pt-5 mb-20">
         <div class="popular-movies">
             <h2 class="uppercase tracking-wide
             text-orange-500
-            text-lg font-semibold">
-            Filmes para Assistir Depois
+            text-lg font-semibold text-center">
+            Filmes já Assistidos
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16">
             @foreach ($popularMovies as $movie)
             @endforeach
+            
             @foreach ($movies as $moviesfavorited)
-            @if(Auth::user()->id == $moviesfavorited->id_user)
+            @if(Auth::user()->id == $moviesfavorited->id_user && $moviesfavorited->status === 1)
+           
             <div class="mt-8">
             
                 <a href="{{route('movies.show', $moviesfavorited['id_movie'])}}">
@@ -36,10 +39,8 @@
                     </div>
                 </div>
             </div>
-            
             @endif
             @endforeach
-            
         </div>
     </div>
 @endsection

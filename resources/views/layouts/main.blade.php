@@ -45,6 +45,11 @@
                     <a href="{{route('movies.create')}}">Assistir Depois</a>
                 </li>
                 @endif
+                @if(Auth::user())
+                <li class="md:ml-6 mt-3 md:mt-0">
+                    <a href="{{route('movies.alreadyWatched')}}">Já Assistidos</a>
+                </li>
+                @endif
 
             </ul>
             @if (Auth::user())

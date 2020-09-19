@@ -50,7 +50,22 @@ class MoviesController extends Controller
         ->json()['results'];
 
 
-        return view('favorito', [
+        return view('favorite', [
+            'popularMovies' => $popularMovies,
+            'movies'=>$movies
+        ]);
+    }
+
+    public function alreadyWatched()
+    {
+        $movies = Movie::all();
+
+        $popularMovies = Http::withToken(config('services.tmdb.token'))
+        ->get('https://api.themoviedb.org/3/movie/popular?language=pt-BR')
+        ->json()['results'];
+
+
+        return view('alreadyWatched', [
             'popularMovies' => $popularMovies,
             'movies'=>$movies
         ]);
@@ -123,6 +138,17 @@ class MoviesController extends Controller
     public function edit($id)
     {
         //
+    }
+
+    public function editStatus($id)
+    {
+        $movie = Movie::find($id);
+
+        if($movie && $movie->status === 0) {
+            $movie->status = 1;
+            $movie->save();
+            return redirect()->route('movies.alreadyWatched');
+        }
     }
 
     /**

@@ -9,11 +9,11 @@
   </div>
 </div>
 @endif
-    <div class="container mx-auto px-4 pt-16 mb-20">
+    <div class="container mx-auto px-4 pt-5 mb-20">
         <div class="popular-movies">
             <h2 class="uppercase tracking-wide
             text-orange-500
-            text-lg font-semibold">
+            text-lg font-semibold text-center">
             Filmes Populares
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16">

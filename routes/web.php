@@ -10,7 +10,12 @@ Route::get('/listmovie', 'MoviesController@index')->name('movies.index')->middle
 Route::post('/movies/{movie}', 'MoviesController@store')->middleware('auth');
 
 Route::get('/movies/{movie}', 'MoviesController@show')->name('movies.show')->middleware('auth');
-Route::get('/favorito', 'MoviesController@create')->name('movies.create')->middleware('auth');
+Route::get('/favorite', 'MoviesController@create')->name('movies.create')->middleware('auth');
+
+Route::get('/editStatus/{id}', 'MoviesController@editStatus')->name('editStatus')->middleware('auth');
+
+Route::get('/alreadyWatched', 'MoviesController@alreadyWatched')
+->name('movies.alreadyWatched')->middleware('auth');
 
 Route::get('login', 'Auth\LoginController@index')->name('login');
 Route::post('login', 'Auth\LoginController@authenticate');
