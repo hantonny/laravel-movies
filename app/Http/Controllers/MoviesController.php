@@ -148,6 +148,10 @@ class MoviesController extends Controller
             $movie->status = 1;
             $movie->save();
             return redirect()->route('movies.alreadyWatched');
+        }else {
+            $movie->status = 0;
+            $movie->save();
+            return redirect()->route('movies.create');
         }
     }
 
@@ -171,6 +175,12 @@ class MoviesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $movie = Movie::find($id);
+
+        if($movie){
+            $movie->delete();
+            return redirect()->route('movies.index')
+            ->with('warning' , 'Filme excluido com sucesso! :-)');
+        }
     }
 }

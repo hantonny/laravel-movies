@@ -12,6 +12,8 @@ Route::post('/movies/{movie}', 'MoviesController@store')->middleware('auth');
 Route::get('/movies/{movie}', 'MoviesController@show')->name('movies.show')->middleware('auth');
 Route::get('/favorite', 'MoviesController@create')->name('movies.create')->middleware('auth');
 
+Route::get('/delete/{id}', 'MoviesController@destroy')->name('movies.destroy')->middleware('auth');
+
 Route::get('/editStatus/{id}', 'MoviesController@editStatus')->name('editStatus')->middleware('auth');
 
 Route::get('/alreadyWatched', 'MoviesController@alreadyWatched')

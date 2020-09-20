@@ -18,13 +18,13 @@
             Filmes para Assistir Depois
             </h2>
             <p>Legenda:</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16 ">
-            <p class="rounded inline-flex items-center"><img class="w-6 mr-2 mt-2" src="/img/olho.svg"/>
-            - Já assistido
-            </p>
-            <p class="rounded inline-flex items-center mt-3"><img class="w-6 mr-2" src="/img/excluir.svg"/>
-            - Excluir
-            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16 mt-2">
+                <p class="rounded inline-flex items-center"><img class="w-6 mr-2 mt-2" src="/img/olho.svg"/>
+                - Já assistido
+                </p>
+                <p class="rounded inline-flex items-center"><img class="w-6 mr-2" src="/img/excluir.svg"/>
+                - Excluir
+                </p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16">
             @foreach ($popularMovies as $movie)
@@ -46,7 +46,7 @@
                 </div>
                 <a href="{{route('editStatus', [$moviesfavorited->id])}}" class="mt-1 hover:bg-blue-400 transition ease-in-out duration-150 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center mt-2"><img class="w-8 mt-2" src="/img/olho.svg" alt="Já assistido"/></a>
 
-                <a href="{{route('editStatus', [$moviesfavorited->id])}}" class="mt-1 hover:bg-red-400 transition ease-in-out duration-150 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center mt-2"><img class="w-8" src="/img/excluir.svg" alt="Excluir"/></a>
+                <a href="{{route('movies.destroy', [$moviesfavorited->id])}}" class="mt-1 hover:bg-red-400 transition ease-in-out duration-150 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center mt-2"><img class="w-8" src="/img/excluir.svg" alt="Excluir"/></a>
             </div>
             
             @endif
